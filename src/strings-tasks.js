@@ -475,10 +475,11 @@ function extractEmails(str) {
  *
  */
 function encodeToRot13(str) {
-  return str.replace(/[a-zA-Z]/g, function (c) {
+  function replaceChar(c) {
     const base = c <= 'Z' ? 65 : 97;
     return String.fromCharCode(((c.charCodeAt(0) - base + 13) % 26) + base);
-  });
+  }
+  return str.replace(/[a-zA-Z]/g, replaceChar);
 }
 /**
  * Returns playid card id.
